@@ -20,7 +20,7 @@ public class PaymentController {
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String PAYMENT_URL = "http://localhost:8001/payment/";
+    private static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE/payment/";
 
     @GetMapping(value = "/add")
     @SuppressWarnings(value = "unchecked")
@@ -32,5 +32,10 @@ public class PaymentController {
     @SuppressWarnings(value = "unchecked")
     public CommenResult<Payment> getPaymentById(@PathVariable(value = "id") Long id) {
         return restTemplate.getForObject(PAYMENT_URL + "get/" + id, CommenResult.class);
+    }
+
+    @GetMapping(value = "/discovery")
+    public Object discovery() {
+        return restTemplate.getForObject(PAYMENT_URL + "discovery", Object.class);
     }
 }
