@@ -1,0 +1,15 @@
+server:
+  port: 8006
+
+
+spring:
+  application:
+    name: consul-provider-payment
+  cloud:
+    consul:
+      host: 106.12.129.122
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        # secure=false 出现的原因是linux服务器无法访问本地的这个地址进行健康检查，如果都部署在服务器上，没有这个问题
+        health-check-url: ${spring.cloud.client.ip-address}:${server.port}/actuator/health
