@@ -60,4 +60,9 @@ public class PaymentController {
         }
         return this.discoveryClient;
     }
+
+    @GetMapping(value = "/feign/timeout")
+    public int paymentFeignTimeout() {
+        return serverPort;
+    }
 }
