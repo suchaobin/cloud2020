@@ -1,0 +1,19 @@
+server:
+  port: 8001
+
+eureka:
+  client:
+    register-with-eureka: true # 表示不向注 册 中心注 册 自己
+    fetch-registry: true # 表示自己就是注 册 中心， 职责 是 维护 服 务实 例， 并 不需要去 检 索服 务
+    service-url:
+      # defaultZone: http://eureka7002.com:7002/eureka/  # 设 置 与 eureka server 交互的地址 查询 服 务 和注 册 服 务 都需要依 赖这个 地址
+      defaultZone: http://eureka7001.com:7001/eureka/
+
+
+# server:
+  # enable-self-preservation: false
+
+spring:
+  application:
+    name: cloud-provider-hystrix-payment
+    # eviction-interval-timer-in-ms: 2000
