@@ -1,0 +1,25 @@
+server:
+  port: 3355
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: main
+      name: config
+      profile: dev
+      uri: http://localhost:3344
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+
+# 监控，保证配置中心config-server端变化的时候，能够监控到，保证读取的配置是最新的
+management :
+  endpoints :
+    web :
+      exposure :
+        include : "*"
+
