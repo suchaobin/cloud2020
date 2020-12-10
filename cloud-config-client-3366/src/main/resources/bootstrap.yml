@@ -1,5 +1,5 @@
 server:
-  port: 3355
+  port: 3366
 
 spring:
   application:
@@ -10,10 +10,9 @@ spring:
       name: config
       profile: dev
       uri: http://localhost:3344
-
   rabbitmq:
-    host: localhost
     port: 5672
+    host: localhost
     username: guest
     password: guest
 
@@ -22,8 +21,10 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+# 监控，保证配置中心config-server端变化的时候，能够监控到，保证读取的配置是最新的
+management :
+  endpoints :
+    web :
+      exposure :
+        include : "*"
+
