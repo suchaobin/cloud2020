@@ -68,4 +68,9 @@ public class PaymentController {
         // 现在是先在所有的服务中计算，获取本次应该选用的服务，所以是根据具体的url进行操作，而只有一个服务，所以需要取消@LoadBalanced
         return restTemplate.getForObject(uri + "/payment/discovery", Object.class);
     }
+
+    @GetMapping(value = "/zipkin")
+    public Object zipkin() {
+        return restTemplate.getForObject(PAYMENT_URL + "zipkin", String.class);
+    }
 }
