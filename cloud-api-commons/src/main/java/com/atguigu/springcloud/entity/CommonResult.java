@@ -14,14 +14,14 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommenResult<T> implements Serializable {
+public class CommonResult<T> implements Serializable {
     private static final long serialVersionUID = -4031430416058035198L;
 
     private Integer code;
     private String message;
     private T data;
 
-    public CommenResult(Integer code, String message) {
+    public CommonResult(Integer code, String message) {
         this.code = code;
         this.message = message;
     }

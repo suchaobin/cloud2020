@@ -1,6 +1,6 @@
 package com.atguigu.springcloud.controller;
 
-import com.atguigu.springcloud.entity.CommenResult;
+import com.atguigu.springcloud.entity.CommonResult;
 import com.atguigu.springcloud.entity.Payment;
 import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,22 +31,22 @@ public class PaymentController {
 
     @GetMapping(value = "/get/{id}")
     @ResponseBody
-    public CommenResult<Payment> getPaymentById(@PathVariable(value = "id") Long id) {
+    public CommonResult<Payment> getPaymentById(@PathVariable(value = "id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
         if (null == payment) {
-            return new CommenResult<>(500, "没有对应记录,id=" + id, null);
+            return new CommonResult<>(500, "没有对应记录,id=" + id, null);
         }
-        return new CommenResult<>(200, "查询成功,serverPort=" + serverPort, payment);
+        return new CommonResult<>(200, "查询成功,serverPort=" + serverPort, payment);
     }
 
     @PostMapping(value = "/add")
     @ResponseBody
-    public CommenResult<Payment> addPayment(@RequestBody Payment payment) {
+    public CommonResult<Payment> addPayment(@RequestBody Payment payment) {
         int result = paymentService.addPayment(payment);
         if (result < 0) {
-            return new CommenResult<>(500, "插入失败", null);
+            return new CommonResult<>(500, "插入失败", null);
         }
-        return new CommenResult<>(200, "插入成功,serverPort=" + serverPort, payment);
+        return new CommonResult<>(200, "插入成功,serverPort=" + serverPort, payment);
     }
 
     @GetMapping(value = "/discovery")

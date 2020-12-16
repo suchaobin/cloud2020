@@ -1,6 +1,6 @@
 package com.atguigu.springcloud.controller;
 
-import com.atguigu.springcloud.entity.CommenResult;
+import com.atguigu.springcloud.entity.CommonResult;
 import com.atguigu.springcloud.entity.Payment;
 import com.atguigu.springcloud.lb.LoadBalancer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,25 +35,25 @@ public class PaymentController {
 
     @GetMapping(value = "/add")
     @SuppressWarnings(value = "unchecked")
-    public CommenResult<Payment> addPayment(Payment payment) {
-        return restTemplate.postForObject(PAYMENT_URL + "add", payment, CommenResult.class);
+    public CommonResult<Payment> addPayment(Payment payment) {
+        return restTemplate.postForObject(PAYMENT_URL + "add", payment, CommonResult.class);
     }
 
     @GetMapping(value = "/get/{id}")
     @SuppressWarnings(value = "unchecked")
-    public CommenResult<Payment> getPaymentById(@PathVariable(value = "id") Long id) {
-        return restTemplate.getForObject(PAYMENT_URL + "get/" + id, CommenResult.class);
+    public CommonResult<Payment> getPaymentById(@PathVariable(value = "id") Long id) {
+        return restTemplate.getForObject(PAYMENT_URL + "get/" + id, CommonResult.class);
     }
 
     @GetMapping(value = "/getForEntity/{id}")
     @SuppressWarnings(value = "unchecked")
-    public CommenResult<Payment> getPayment(@PathVariable(value = "id") Long id) {
-        ResponseEntity<CommenResult> entity = restTemplate.getForEntity(PAYMENT_URL + "get/" + id,
-                CommenResult.class);
+    public CommonResult<Payment> getPayment(@PathVariable(value = "id") Long id) {
+        ResponseEntity<CommonResult> entity = restTemplate.getForEntity(PAYMENT_URL + "get/" + id,
+                CommonResult.class);
         if (entity.getStatusCode().is2xxSuccessful()) {
             return entity.getBody();
         }
-        return new CommenResult<Payment>(500, "查询错误！");
+        return new CommonResult<Payment>(500, "查询错误！");
     }
 
     @GetMapping(value = "/discovery")
