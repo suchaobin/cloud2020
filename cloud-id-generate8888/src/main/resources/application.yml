@@ -1,0 +1,16 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: cloud-id-generate
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
